@@ -10,8 +10,8 @@ NEI_sampling <- NEI[sample(nrow(NEI), size=5000, replace=F), ]
 # Subset data and append two years in one data frame
 MD <- subset(NEI, fips=='24510')
 
-# Have total emissions from PM2.5 decreased in the Baltimore City, Maryland (fips == "24510") 
-# from 1999 to 2008? Use the base plotting system to make a plot answering this question.
+# Have total emissions from PM2.5 decreased in the Baltimore City, Maryland (fips == "24510") from 1999 to 2008?
+# Use the base plotting system to make a plot answering this question.
 # Generate the graph 
 png(filename='~/Exploratory_Data_Analysis/Project_2/plot2.png')
 
