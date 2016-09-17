@@ -22,7 +22,7 @@ colnames(CA.DF) <- c('year', 'Emissions')
 CA.DF$City <- paste(rep('CA', 4))
 DF <- as.data.frame(rbind(MD.DF, CA.DF))
 
-# Compare emissions from motor vehicle sources in Baltimore City with emissions from motor vehicle sources in Los Anageles County,
+# Compare emissions from motor vehicle sources in Baltimore City with emissions from motor vehicle sources in Los Angeles County,
 #  California (fips == 06037). Which city has seen greater changes over time in motor vehicle emissions
 # Generate the graph
 png('~/Exploratory_Data_Analysis/Project_2/plot6.png')
