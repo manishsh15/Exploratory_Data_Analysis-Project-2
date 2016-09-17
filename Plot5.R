@@ -15,6 +15,7 @@ MD.onroad <- subset(NEI, fips == 24510 & type == 'ON-ROAD')
 # Aggregate
 MD.df <- aggregate(MD.onroad[, 'Emissions'], by=list(MD.onroad$year), sum)
 colnames(MD.df) <- c('year', 'Emissions')
+
 # How have emissions from motor vehicle sources changed from 1999-2008 in Baltimore City? 
 # Generate the graph 
 png('~/Exploratory_Data_Analysis/Project_2/plot5.png')
