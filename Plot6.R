@@ -1,7 +1,9 @@
+Exploratory Data Analysis-Project2-Q6
+
 # Load ggplot2 library
 library(ggplot2)
-NEI <- readRDS("~/Exploratory_Data_Analysis/Assignment_2/summarySCC_PM25.rds")
-SCC <- readRDS("~/Exploratory_Data_Analysis/Assignment_2/Source_Classification_Code.rds")
+NEI <- readRDS("~/Exploratory_Data_Analysis/Project_2/summarySCC_PM25.rds")
+SCC <- readRDS("~/Exploratory_Data_Analysis/Project_2/Source_Classification_Code.rds")
 
 NEI$year <- factor(NEI$year, levels=c('1999', '2002', '2005', '2008'))
 
@@ -9,6 +11,7 @@ NEI$year <- factor(NEI$year, levels=c('1999', '2002', '2005', '2008'))
 # Los Angeles County, California
 MD.onroad <- subset(NEI, fips == '24510' & type == 'ON-ROAD')
 CA.onroad <- subset(NEI, fips == '06037' & type == 'ON-ROAD')
+
 # Aggregate
 MD.DF <- aggregate(MD.onroad[, 'Emissions'], by=list(MD.onroad$year), sum)
 colnames(MD.DF) <- c('year', 'Emissions')
@@ -19,12 +22,10 @@ colnames(CA.DF) <- c('year', 'Emissions')
 CA.DF$City <- paste(rep('CA', 4))
 DF <- as.data.frame(rbind(MD.DF, CA.DF))
 
-
-# Compare emissions from motor vehicle sources in Baltimore City with emissions from motor vehicle sources 
-# in Los Angeles County, California (fips == 06037). Which city has seen greater changes over time 
-# in motor vehicle emissions?
-# Generate the graph in the same directory as the source code
-png('~/Exploratory_Data_Analysis/Assignment_2/plot6.png')
+# Compare emissions from motor vehicle sources in Baltimore City with emissions from motor vehicle sources in Los Anageles County,
+#  California (fips == 06037). Which city has seen greater changes over time in motor vehicle emissions
+# Generate the graph
+png('~/Exploratory_Data_Analysis/Project_2/plot6.png')
 
 ggplot(data=DF, aes(x=year, y=Emissions)) + geom_bar(aes(fill=year)) + guides(fill=F) + 
     ggtitle('Total Emissions of Motor Vehicle Sources\nLos Angeles County, California vs. Baltimore City, Maryland') + 
