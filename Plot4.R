@@ -1,8 +1,11 @@
+Exploratory Data Analysis-Project2-Q4
+
 # Load ggplot2 library
 require(ggplot2)
-# Loading provided datasets - loading from local machine
-NEI <- readRDS("~/Exploratory_Data_Analysis/Assignment_2/summarySCC_PM25.rds")
-SCC <- readRDS("~/Exploratory_Data_Analysis/Assignment_2/Source_Classification_Code.rds")
+# Loading provided datasets 
+NEI <- readRDS("~/Exploratory_Data_Analysis/Project_2/summarySCC_PM25.rds")
+SCC <- readRDS("~/Exploratory_Data_Analysis/Project_2/Source_Classification_Code.rds")
+
 # Coal combustion related sources
 SCC.coal = SCC[grepl("coal", SCC$Short.Name, ignore.case=TRUE),]
 
@@ -10,11 +13,10 @@ SCC.coal = SCC[grepl("coal", SCC$Short.Name, ignore.case=TRUE),]
 merge <- merge(x=NEI, y=SCC.coal, by='SCC')
 merge.sum <- aggregate(merge[, 'Emissions'], by=list(merge$year), sum)
 colnames(merge.sum) <- c('Year', 'Emissions')
-# Across the United States, how have emissions from coal combustion-related sources 
-# changed from 1999-2008?
 
-# Generate the graph in the same directory as the source code
-png(filename='~/Exploratory_Data_Analysis/Assignment_2/plot4.png')
+# Across the United States, how have emissions from coal combustion-related sources changed from 1999-2008?
+# Generate the graph 
+png(filename='~/Exploratory_Data_Analysis/Project_2/plot4.png')
 ggplot(data=merge.sum, aes(x=Year, y=Emissions/1000)) + 
     geom_line(aes(group=1, col=Emissions)) + geom_point(aes(size=2, col=Emissions)) + 
     ggtitle(expression('Total Emissions of PM'[2.5])) + 
