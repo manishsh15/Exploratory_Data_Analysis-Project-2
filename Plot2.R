@@ -1,3 +1,5 @@
+Exploratory Data Analysis-Project2-Q2
+
 # Loading datasets 
 NEI <- readRDS("~/Exploratory_Data_Analysis/Project_2/summarySCC_PM25.rds")
 SCC <- readRDS("~/Exploratory_Data_Analysis/Project_2/Source_Classification_Code.rds")
